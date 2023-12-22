@@ -1,0 +1,59 @@
+.about {
+    display:flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-left: -10%;
+}
+
+.usTwo {
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 100px;
+    margin: 1rem;
+}
+
+.usTwo img {
+    width: 100px;
+    border-radius: 10px;
+    margin: 1rem;
+}
+
+.socialMedia {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 1rem;
+    width: 200px;
+    
+}
+
+.gitHub{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100px;
+}
+.gitHub img {
+    width: 40px;
+    border-radius: 2px;
+}
+
+
+.linkedIn {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100px;
+    margin-left: 5px;
+}
+
+.linkedIn img {
+    width: 30px;
+    border-radius: 2px;
+}
+
+.textabout {
+    color:black;
+
+}
