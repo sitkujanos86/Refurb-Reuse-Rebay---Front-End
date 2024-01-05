@@ -3,36 +3,40 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Search from "../Components/Search";
 
-let API_URL = "http://localhost:5005";
-
 function HomePage() {
+
+    let API_URL = "http://localhost:5005/items";
     const [items, setItems] = useState([]);
     const [searchTerm, setSearchTerm] = useState('')
     const [timeoutId, setTimeoutId] = useState()
 
     const getAllItems = (query) => {
       if (query) {
-        API_URL += `/items/search?q=${query}`
+          API_URL += `?q=${query}`
       }
       axios
-          .get(`${API_URL}/items`)
+          .get(`${API_URL}`)
           .then((response) => setItems(response.data))
           .catch((error) => console.error(error));
-      };
+      
+    };
 
     useEffect(() => {
         getAllItems();
     }, [] );  
 
+    
     useEffect(() => {
-      clearTimeout(timeoutId)
-      if (searchTerm) {
-        setTimeoutId(
-          setTimeout(() => {
-            getAllItems(searchTerm)
-          }, 500)
-        )
-      }
+        clearTimeout(timeoutId)
+        if (searchTerm) {
+          setTimeoutId(
+            setTimeout(() => {
+              getAllItems(searchTerm)
+            }, 300)
+          )
+        } else {
+          getAllItems()
+        }
     }, [searchTerm])
 
     return (
