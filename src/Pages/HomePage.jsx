@@ -22,7 +22,7 @@ function HomePage() {
              {items.map((item) => {
           return (
             <div className="Item card" key={item.id} >
-              <Link to={"/items/" + item.id}>
+              <Link to={"/item/" + item.id}>
                 <h3>{item.name}</h3>
                 <img src={item.picture} alt="item picture"/> 
                 <p>{item.description}</p>
