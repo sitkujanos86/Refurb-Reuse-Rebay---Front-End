@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
@@ -6,6 +7,7 @@ const API_URL = "http://localhost:5005";
 
 function HomePage() {
     const [items, setItems] = useState([]);
+    const {itemId} = useParams();
 
     const getAllItems = () => {
         axios
@@ -23,7 +25,7 @@ function HomePage() {
              {items.map((item) => {
           return (
             <div className="Item card" key={item.id} >
-              <Link to={`/items/${item.id}`}>
+              <Link to={`/items/${itemId}`}>
                 <h3>{item.name}</h3>
                 <img src={item.picture} alt="item picture"/> 
                 <p>{item.description}</p>

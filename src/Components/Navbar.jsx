@@ -11,6 +11,9 @@ function Navbar () {
           <Link to="/AboutPage">
             <button>About US</button>
           </Link>
+          <Link to="/AddItemPage">
+            <button>Add Item</button>
+          </Link>
           <Link to="/CartPage">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTB8zHL36gU-i3jQlw8gN1pv3sIoFAVoEERtA&usqp=CAU" alt="Cart" />
           </Link>
