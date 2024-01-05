@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { v4 as uuidv4 } from "uuid"
+
 
 function AddItemPage() {
     const navigate = useNavigate();
@@ -25,11 +27,12 @@ function AddItemPage() {
         await axios.post(
           `http://localhost:5005/items`,
           {
+            id: uuidv4(),
             name,
             description,
             picture,
             category,
-            price,
+            price: parseInt(price),
           },
           {
             headers: {
