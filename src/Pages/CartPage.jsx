@@ -2,7 +2,7 @@ import React from "react";
 
 function CartPage({cartItems, setCartItems}) {
   
-  const deleteItem = (itemId) => {
+  const removeItem = (itemId) => {
     const filteredItems = cartItems.filter(item => {
       return item.id !== itemId;
     });
@@ -28,8 +28,8 @@ function CartPage({cartItems, setCartItems}) {
           <img src={item.picture} alt="item picture" />
           <p>{item.description}</p>
           <p>{item.price}€</p>
-          <button onClick={() => deleteItem(item.id)} className="btn-delete">
-              Delete 
+          <button onClick={() => removeItem(item.id)} className="btn-delete">
+              Remove item 
           </button>
         </div>
       ))}
