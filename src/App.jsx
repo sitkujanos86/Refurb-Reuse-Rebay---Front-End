@@ -17,9 +17,9 @@ function App() {
       <Navbar/>
       <Routes>
         <Route path="/" element={ <HomePage/> } />
-        <Route path="/AboutPage" element={ <AboutPage/> } />
-        <Route path="/CartPage" element={ <CartPage/> } />
-        <Route path="/AddItemPage" element={ <AddItemPage/> } />
+        <Route path="/About" element={ <AboutPage/> } />
+        <Route path="/Cart" element={ <CartPage/> } />
+        <Route path="/AddItem" element={ <AddItemPage/> } />
         <Route path="/item/:itemId" element={<DetailsPage />} />
       </Routes>
       <Footer/>
