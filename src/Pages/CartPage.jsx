@@ -15,6 +15,10 @@ function CartPage({cartItems, setCartItems}) {
     window.alert('Cart empty!')
   };
 
+  const sumCart = cartItems.reduce((sum, currentItem) => {
+    return sum + parseInt(currentItem.price);
+  },0);
+
   return (
     <div>
       <h1>Cart Page</h1>
@@ -29,6 +33,7 @@ function CartPage({cartItems, setCartItems}) {
           </button>
         </div>
       ))}
+      <h2>Total €{sumCart}</h2>
       <button onClick={() => deleteAll()} className="btn-delete">
               Don't Buy! 
       </button>

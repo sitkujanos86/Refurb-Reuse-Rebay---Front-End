@@ -43,7 +43,7 @@ function HomePage({cartItems, setCartItems}) {
   };
 
   const deleteItem = (itemId) => { 
-    const confirmDelete = window.confirm("Are you sure you want to delete this item?");
+    const confirmDelete = window.confirm("Are you sure you have the permission to delete this item?");
     if (confirmDelete) {
       axios
         .delete(`${API_URL}/${itemId}`)

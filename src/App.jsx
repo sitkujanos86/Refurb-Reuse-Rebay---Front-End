@@ -14,7 +14,7 @@ import EditItemPage from "./Pages/EditItemPage";
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
-
+  
   return (
     <div className="App">
       <Navbar />
