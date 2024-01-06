@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Search from "../Components/Search";
 
-function HomePage() {
+function HomePage({cartItems}) {
 
   let API_URL = "http://localhost:5005/items";
   const [items, setItems] = useState([]);
@@ -18,12 +18,6 @@ function HomePage() {
       .get(`${API_URL}`)
       .then((response) => setItems(response.data))
       .catch((error) => console.error(error));
-  };
-
-  const addToCart = (item) => {
-    const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
-    cartItems.push(item);
-    localStorage.setItem("cart", JSON.stringify(cartItems));
   };
 
   useEffect(() => {
@@ -41,6 +35,10 @@ function HomePage() {
       getAllItems();
     }
   }, [searchTerm]);
+
+  const addToCart = (item) => {
+    cartItems.push(item);
+  };
   return (
     <>
       <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
@@ -54,7 +52,7 @@ function HomePage() {
                 <p>{item.description}</p>
                 <p>{item.price}€</p>
               </Link>
-              <button onClick={() => addToCart(item)}>Add to Cart</button>
+              <button onClick={addToCart(item)}>Add to Cart</button>
             </div>
           );
         })}

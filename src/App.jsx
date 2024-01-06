@@ -12,13 +12,15 @@ import { Routes, Route } from "react-router-dom";
 
 
 function App() {
+  const cartItems = []
+  
   return (
     <div className="App">
       <Navbar/>
       <Routes>
-        <Route path="/" element={ <HomePage/> } />
+        <Route path="/" element={ <HomePage cartItems={cartItems}/> } />
         <Route path="/About" element={ <AboutPage/> } />
-        <Route path="/Cart" element={ <CartPage/> } />
+        <Route path="/Cart" element={ <CartPage cartItems={cartItems}/> } />
         <Route path="/AddItem" element={ <AddItemPage/> } />
         <Route path="/item/:itemId" element={<DetailsPage />} />
       </Routes>

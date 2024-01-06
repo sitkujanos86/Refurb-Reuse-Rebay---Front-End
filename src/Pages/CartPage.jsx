@@ -1,7 +1,7 @@
 import React from "react";
 
-function CartPage() {
-  const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+function CartPage({cartItems}) {
+  
 
   return (
     <div>
