@@ -42,6 +42,20 @@ function HomePage({cartItems, setCartItems}) {
       window.alert('Item added to the cart!')
   };
 
+  const deleteItem = (itemId) => { 
+    const confirmDelete = window.confirm("Are you sure you want to delete this item?");
+    if (confirmDelete) {
+      axios
+        .delete(`${API_URL}/${itemId}`)
+        .then(() => {
+          getAllItems()
+        })
+        .catch((err) => {
+          console.error("Error deleting item:", err);
+        });
+    }
+  };
+  
   return (
     <>
       <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
@@ -56,6 +70,10 @@ function HomePage({cartItems, setCartItems}) {
                 <p>{item.price}€</p>
               </Link>
               <button onClick={() => addToCart(item)}>Add to Cart</button>
+              <button onClick={() => deleteItem(item.id)}>Delete item</button>
+              <Link to={"/edit/" + item.id}>
+              <button>Update item</button>
+              </Link>
             </div>
           );
         })}

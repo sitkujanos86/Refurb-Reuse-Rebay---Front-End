@@ -9,6 +9,7 @@ import AddItemPage from "./Pages/AddItemPage";
 import DetailsPage from "./Pages/DetailsPage";
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
+import EditItemPage from "./Pages/EditItemPage";
 
 
 
@@ -24,6 +25,7 @@ function App() {
         <Route path="/Cart" element={ <CartPage cartItems={cartItems} setCartItems={setCartItems}/> } />
         <Route path="/AddItem" element={ <AddItemPage/> } />
         <Route path="/item/:itemId" element={<DetailsPage />} />
+        <Route path="/edit/:itemId" element={ <EditItemPage /> } />
       </Routes>
       <Footer/>
     </div>
