@@ -16,6 +16,12 @@ function HomePage() {
       .then((response) => setItems(response.data))
       .catch((error) => console.error(error));
   };
+  const addToCart = (item) => {
+    const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+    cartItems.push(item);
+    localStorage.setItem("cart", JSON.stringify(cartItems));
+  };
+
   useEffect(() => {
     getAllItems();
   }, []);
@@ -43,6 +49,7 @@ function HomePage() {
                 <img src={item.picture} alt="item picture" />
                 <p>{item.description}</p>
                 <p>{item.price}€</p>
+                <button onClick={() => addToCart(item)}>Add to Cart</button>
               </Link>
             </div>
           );
