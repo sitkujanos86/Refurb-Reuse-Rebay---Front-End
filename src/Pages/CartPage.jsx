@@ -1,7 +1,19 @@
 import React from "react";
 
-function CartPage({cartItems}) {
+function CartPage({cartItems, setCartItems}) {
   
+  const deleteItem = (itemId) => {
+    const filteredItems = cartItems.filter(item => {
+      return item.id !== itemId;
+    });
+ 
+    setCartItems(filteredItems);
+  };
+
+  const deleteAll = () => {
+    setCartItems([]);
+    window.alert('Cart empty!')
+  };
 
   return (
     <div>
@@ -12,8 +24,14 @@ function CartPage({cartItems}) {
           <img src={item.picture} alt="item picture" />
           <p>{item.description}</p>
           <p>{item.price}€</p>
+          <button onClick={() => deleteItem(item.id)} className="btn-delete">
+              Delete 
+          </button>
         </div>
       ))}
+      <button onClick={() => deleteAll()} className="btn-delete">
+              Don't Buy! 
+      </button>
     </div>
   );
 }

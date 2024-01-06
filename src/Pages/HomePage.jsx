@@ -39,6 +39,7 @@ function HomePage({cartItems, setCartItems}) {
 
   const addToCart = (item) => {
       setCartItems([...cartItems, item]);
+      window.alert('Item added to the cart!')
   };
 
   return (
