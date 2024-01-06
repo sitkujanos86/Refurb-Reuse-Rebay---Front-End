@@ -3,12 +3,13 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Search from "../Components/Search";
 
-function HomePage({cartItems}) {
+function HomePage({cartItems, setCartItems}) {
 
   let API_URL = "http://localhost:5005/items";
   const [items, setItems] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [timeoutId, setTimeoutId] = useState();
+  
 
   const getAllItems = (query) => {
     if (query) {
@@ -37,8 +38,9 @@ function HomePage({cartItems}) {
   }, [searchTerm]);
 
   const addToCart = (item) => {
-    cartItems.push(item);
+      setCartItems([...cartItems, item]);
   };
+
   return (
     <>
       <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
@@ -52,7 +54,7 @@ function HomePage({cartItems}) {
                 <p>{item.description}</p>
                 <p>{item.price}€</p>
               </Link>
-              <button onClick={addToCart(item)}>Add to Cart</button>
+              <button onClick={() => addToCart(item)}>Add to Cart</button>
             </div>
           );
         })}
