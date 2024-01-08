@@ -1,27 +1,42 @@
+import { Button } from "@mantine/core";
 import "../Styles/Navbar.css";
 import { Link } from "react-router-dom";
+
 
 function Navbar() {
   return (
     <nav>
       <Link to="/">
-        <button>Home</button>
+        <Button color="blue" mt="md" radius="md" >
+            Home
+        </Button>
       </Link>
+
       <Link to="/About">
-        <button>About US</button>
+        <Button color="blue" mt="md" radius="md" >
+          About US
+        </Button>
       </Link>
+
       <Link to="/AddItem">
-        <button>Add Item</button>
+        <Button color="blue" mt="md" radius="md" >
+          Add Item
+        </Button>
       </Link>
+
       <Link to="/Quote">
-        <button>Ask for quote</button>
+        <Button color="blue" mt="md" radius="md" >
+          Ask for quote
+        </Button>
       </Link>
+
       <Link to="/Cart">
         <img
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTB8zHL36gU-i3jQlw8gN1pv3sIoFAVoEERtA&usqp=CAU"
           alt="Cart"
         />
       </Link>
+
     </nav>
   );
 }

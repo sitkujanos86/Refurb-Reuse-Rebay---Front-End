@@ -1,18 +1,19 @@
+import { TextInput } from '@mantine/core';
+
 function Search({ searchTerm, setSearchTerm }) {
   return (
-    <div className="searchCtn">
-      <div className="outerDiv">
-        <div className="innerDiv">
-          <span className="spanSearch">Search</span>
-        </div>
-        <input
+    <div style={{ width: '500px' }}>
+        <TextInput
+          variant="filled"
+          size="md"
+          radius="xl"
+          label="Search"
+          placeholder="by name or category"
           value={searchTerm}
-          onChange={(event) => setSearchTerm(event.target.value)}
-          type="text"
-          className="searchBar"
+          onChange={(event) => setSearchTerm(event.target.value)}  
         />
-      </div>
-    </div>
+
+</div>
   );
 }
 
