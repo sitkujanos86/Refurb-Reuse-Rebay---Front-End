@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Search from "../Components/Search";
 import { Card, Image, Text, Button, Group } from '@mantine/core';
 import { SimpleGrid } from '@mantine/core';
+import { notifications } from '@mantine/notifications';
 
 function HomePage({cartItems, setCartItems}) {
 
@@ -41,7 +42,6 @@ function HomePage({cartItems, setCartItems}) {
 
   const addToCart = (item) => {
       setCartItems([...cartItems, item]);
-      window.alert('Item added to the cart!')
   };
 
   const deleteItem = (itemId) => { 
@@ -88,15 +88,20 @@ function HomePage({cartItems, setCartItems}) {
                           {item.price}€
                         </Text>
                         </Link>
-                        <Button color="blue" fullWidth mt="md" radius="md" onClick={() => addToCart(item)}>
-                        Add to Cart
+                        <Button color="blue" fullWidth mt="md" radius="md" onClick={() => {
+                            notifications.show({
+                              title: 'Item added to the cart!'
+                            });
+                            addToCart(item)}}
+                            >
+                            Add to Cart
                         </Button>
                         <Button color="blue" fullWidth mt="md" radius="md" onClick={() => deleteItem(item.id)}>
-                        Delete item
+                          Delete item
                         </Button>
                         <Link to={"/edit/" + item.id}>
                           <Button color="blue" fullWidth mt="md" radius="md">
-                          Update item
+                            Update item
                           </Button>
                         </Link>
                     </Card> 

@@ -5,11 +5,14 @@ import './index.css'
 import { BrowserRouter as Router } from "react-router-dom"; 
 import { MantineProvider } from '@mantine/core';
 import '@mantine/core/styles.css';
+import '@mantine/notifications/styles.css';
+import { Notifications } from '@mantine/notifications';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Router>
       <MantineProvider>
+      <Notifications />
         <App />
       </MantineProvider>
     </Router>
