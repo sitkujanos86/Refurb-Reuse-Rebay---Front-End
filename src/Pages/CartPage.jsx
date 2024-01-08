@@ -12,10 +12,15 @@ function CartPage({cartItems, setCartItems}) {
   };
 
   const deleteAll = () => {
+    if (cartItems.length !== 0) {
     setCartItems([]);
     notifications.show({
-      title: 'Cart is empty!'
+      title: "Thanks for trying but of course you can't buy!"
     }) 
+    } else {
+    notifications.show({
+      title: 'Cart is empty!'
+    }) }
   };
 
   const sumCart = cartItems.reduce((sum, currentItem) => {
@@ -38,7 +43,7 @@ function CartPage({cartItems, setCartItems}) {
       ))}
       <h2>Total €{sumCart}</h2>
       <button onClick={() => deleteAll()} className="btn-delete">
-              Don't Buy! 
+              Buy! 
       </button>
     </div>
   );
