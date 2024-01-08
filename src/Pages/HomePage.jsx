@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Search from "../Components/Search";
+import { Card, Image, Text, Button, Group } from '@mantine/core';
+import { SimpleGrid } from '@mantine/core';
 
 function HomePage({cartItems, setCartItems}) {
 
@@ -58,26 +60,51 @@ function HomePage({cartItems, setCartItems}) {
   
   return (
     <>
+    
       <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-      <div className="ItemsList">
-        {items.map((item) => {
-          return (
-            <div className="Item card" key={item.id}>
-              <Link to={"/item/" + item.id}>
-                <h3>{item.name}</h3>
-                <img src={item.picture} alt="item picture" />
-                <p>{item.description}</p>
-                <p>{item.price}€</p>
-              </Link>
-              <button onClick={() => addToCart(item)}>Add to Cart</button>
-              <button onClick={() => deleteItem(item.id)}>Delete item</button>
-              <Link to={"/edit/" + item.id}>
-              <button>Update item</button>
-              </Link>
-            </div>
-          );
-        })}
-      </div>
+        <div className="ItemsList">
+        <SimpleGrid cols={3}>
+          {items.map((item) => {
+            return (
+              <div className="Item card" key={item.id}>
+  
+                    <Card shadow="sm" padding="lg" radius="md" withBorder>
+                      <Link to={"/item/" + item.id}>
+                        <Card.Section>
+                          <Image
+                            src={item.picture}
+                            height={160}
+                            alt="Item picture"
+                          />
+                        </Card.Section>
+
+                        <Group justify="space-between" mt="md" mb="xs">
+                          <Text fw={500}>{item.name}</Text>
+                        </Group>
+                        <Text size="sm" c="dimmed">
+                          {item.description}
+                        </Text>
+                        <Text size="sm" c="dimmed">
+                          {item.price}€
+                        </Text>
+                        </Link>
+                        <Button color="blue" fullWidth mt="md" radius="md" onClick={() => addToCart(item)}>
+                        Add to Cart
+                        </Button>
+                        <Button color="blue" fullWidth mt="md" radius="md" onClick={() => deleteItem(item.id)}>
+                        Delete item
+                        </Button>
+                        <Link to={"/edit/" + item.id}>
+                          <Button color="blue" fullWidth mt="md" radius="md">
+                          Update item
+                          </Button>
+                        </Link>
+                    </Card> 
+              </div>
+            );
+          })}
+          </SimpleGrid>
+          </div>
     </>
   );
 }
