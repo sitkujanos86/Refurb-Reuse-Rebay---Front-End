@@ -12,6 +12,7 @@ function HomePage({cartItems, setCartItems}) {
   const [items, setItems] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [timeoutId, setTimeoutId] = useState();
+  const [itemAddedToCart, setItemAddedToCart] = useState(false);
   
 
   const getAllItems = (query) => {
@@ -40,9 +41,14 @@ function HomePage({cartItems, setCartItems}) {
     }
   }, [searchTerm]);
 
+  
   const addToCart = (item) => {
+    const itemExists = cartItems.find((cartItem) => cartItem.id === item.id);
+    if (!itemExists) {
       setCartItems([...cartItems, item]);
-  };
+      setItemAddedToCart(true);
+    } 
+  }
 
   const deleteItem = (itemId) => { 
     const confirmDelete = window.confirm("Are you sure you have the permission to delete this item?");
@@ -92,12 +98,18 @@ function HomePage({cartItems, setCartItems}) {
       
     
                         <Button color="blue" fullWidth mt="md" radius="md" onClick={() => {
+                          if (!itemAddedToCart){
+                            addToCart(item)
                           notifications.show({
                             title: 'Item added to the cart!'
-                          });
-                          addToCart(item)}}
+                          })} else {
+                            notifications.show({
+                              title: "You can't add a unique item two times!"
+                            })
+                          }
+                          }}
                           >
-                        Add to Cart
+                            Add to Cart
                         </Button>
                         
 
