@@ -15,6 +15,7 @@ import { AppShell } from "@mantine/core";
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
+  let API_URL = "http://localhost:5005/items";
   
   return (
     <div className="App">
@@ -32,14 +33,14 @@ function App() {
           <Route
             path="/"
             element={
-              <HomePage cartItems={cartItems} setCartItems={setCartItems} />
+              <HomePage cartItems={cartItems} setCartItems={setCartItems} API_URL={API_URL} />
             }
           />
           <Route path="/About" element={<AboutPage />} />
           <Route
             path="/Cart"
             element={
-              <CartPage cartItems={cartItems} setCartItems={setCartItems} />
+              <CartPage cartItems={cartItems} setCartItems={setCartItems} API_URL={API_URL} />
             }
           />
           <Route path="/AddItem" element={<AddItemPage />} />

@@ -6,9 +6,9 @@ import { Card, Image, Text, Button, Group } from '@mantine/core';
 import { SimpleGrid } from '@mantine/core';
 import { notifications } from '@mantine/notifications';
 
-function HomePage({cartItems, setCartItems}) {
+function HomePage({cartItems, setCartItems, API_URL}) {
 
-  let API_URL = "http://localhost:5005/items";
+  
   const [items, setItems] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [timeoutId, setTimeoutId] = useState();
@@ -54,20 +54,6 @@ function HomePage({cartItems, setCartItems}) {
       })  
     }
   }
-
-  const deleteItem = (itemId) => { 
-    const confirmDelete = window.confirm("By deleting this item, your computer will be formatted!");
-    if (confirmDelete) {
-      axios
-        .delete(`${API_URL}/${itemId}`)
-        .then(() => {
-          getAllItems()
-        })
-        .catch((err) => {
-          console.error("Error deleting item:", err);
-        });
-    }
-  };
   
   return (
     <>
@@ -109,10 +95,6 @@ function HomePage({cartItems, setCartItems}) {
                             Add to Cart
                         </Button>
                         
-
-                        <Button color="blue" fullWidth mt="md" radius="md" onClick={() => deleteItem(item.id)}>
-                          Delete item
-                        </Button>
                         <Link to={"/edit/" + item.id}>
                           <Button color="blue" fullWidth mt="md" radius="md">
                             Update item

@@ -1,7 +1,9 @@
 import React from "react";
 import { notifications } from '@mantine/notifications';
+import axios from "axios";
 
-function CartPage({cartItems, setCartItems}) {
+
+function CartPage({cartItems, setCartItems, API_URL}) {
   
   const removeItem = (itemId) => {
     const filteredItems = cartItems.filter(item => {
@@ -11,16 +13,30 @@ function CartPage({cartItems, setCartItems}) {
     setCartItems(filteredItems);
   };
 
-  const deleteAll = () => {
+  const deleteItemFromDatabase = (itemId) => {
+    return axios.delete(`${API_URL}/${itemId}`);
+  };
+
+  const deleteAll = async () => {
     if (cartItems.length !== 0) {
-    setCartItems([]);
-    notifications.show({
-      title: "Thanks for trying but of course you can't buy!"
-    }) 
+      try {
+        // Use Promise.all to handle multiple asynchronous delete operations
+        await Promise.all(cartItems.map((item) => deleteItemFromDatabase(item.id)));
+        setCartItems([]); // Clear all items from the cart
+        notifications.show({
+          title: 'Purchase completed! You own us money!'
+        });
+      } catch (error) {
+        console.error("Error deleting items:", error);
+        notifications.show({
+          title: 'Error completing the purchase!'
+        });
+      }
     } else {
-    notifications.show({
-      title: 'Cart is empty!'
-    }) }
+      notifications.show({
+        title: 'Cart is empty!'
+      });
+    }
   };
 
   const sumCart = cartItems.reduce((sum, currentItem) => {
