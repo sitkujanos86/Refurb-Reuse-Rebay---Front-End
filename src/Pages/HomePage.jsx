@@ -88,15 +88,6 @@ function HomePage({cartItems, setCartItems}) {
                           {item.price}€
                         </Text>
                         </Link>
-<<<<<<< HEAD
-                        <Button color="blue" fullWidth mt="md" radius="md" onClick={() => {
-                            notifications.show({
-                              title: 'Item added to the cart!'
-                            });
-                            addToCart(item)}}
-                            >
-                            Add to Cart
-=======
                         
       
     
@@ -107,7 +98,6 @@ function HomePage({cartItems, setCartItems}) {
                           addToCart(item)}}
                           >
                         Add to Cart
->>>>>>> mantine
                         </Button>
                         
 
