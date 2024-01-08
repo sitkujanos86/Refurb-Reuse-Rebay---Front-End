@@ -1,4 +1,5 @@
 import React from "react";
+import { notifications } from '@mantine/notifications';
 
 function CartPage({cartItems, setCartItems}) {
   
@@ -12,7 +13,9 @@ function CartPage({cartItems, setCartItems}) {
 
   const deleteAll = () => {
     setCartItems([]);
-    window.alert('Cart empty!')
+    notifications.show({
+      title: 'Cart is empty!'
+    }) 
   };
 
   const sumCart = cartItems.reduce((sum, currentItem) => {

@@ -21,6 +21,7 @@ function App() {
       
       <AppShell
       header={{ height: 60 }}
+      footer={{ height: 60 }}
     >
       <AppShell.Header>
         <Navbar />        

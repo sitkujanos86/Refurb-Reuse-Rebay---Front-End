@@ -12,7 +12,6 @@ function HomePage({cartItems, setCartItems}) {
   const [items, setItems] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [timeoutId, setTimeoutId] = useState();
-  const [itemAddedToCart, setItemAddedToCart] = useState(false);
   
 
   const getAllItems = (query) => {
@@ -46,8 +45,14 @@ function HomePage({cartItems, setCartItems}) {
     const itemExists = cartItems.find((cartItem) => cartItem.id === item.id);
     if (!itemExists) {
       setCartItems([...cartItems, item]);
-      setItemAddedToCart(true);
-    } 
+      notifications.show({
+        title: 'Item added to the cart!'
+      })  
+    } else {
+      notifications.show({
+        title: "You can't add an unique item twice!"
+      })  
+    }
   }
 
   const deleteItem = (itemId) => { 
@@ -79,7 +84,8 @@ function HomePage({cartItems, setCartItems}) {
                         <Card.Section>
                           <Image
                             src={item.picture}
-                            height={160}
+                            height="400vw"
+                            width="33vw"
                             alt="Item picture"
                           />
                         </Card.Section>
@@ -97,18 +103,9 @@ function HomePage({cartItems, setCartItems}) {
                         
       
     
-                        <Button color="blue" fullWidth mt="md" radius="md" onClick={() => {
-                          if (!itemAddedToCart){
-                            addToCart(item)
-                          notifications.show({
-                            title: 'Item added to the cart!'
-                          })} else {
-                            notifications.show({
-                              title: "You can't add a unique item two times!"
-                            })
-                          }
-                          }}
-                          >
+                        <Button color="blue" fullWidth mt="md" radius="md" onClick={() => 
+                          addToCart(item)                 
+                        }>
                             Add to Cart
                         </Button>
                         
