@@ -1,3 +1,4 @@
+import { notifications } from "@mantine/notifications";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -9,7 +10,7 @@ function QuotePage() {
   const [picture, setPicture] = useState("");
   const [category, setCategory] = useState("");
 
-  // Handler functions for the form inputs. You can leave these as they are.
+  // Handler functions for the form inputs
   const handleName = (event) => setName(event.target.value);
   const handleDescription = (event) => setDescription(event.target.value);
   const handlePicture = (event) => setPicture(event.target.value);
@@ -18,11 +19,12 @@ function QuotePage() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const randomAmount = Math.floor(Math.random() * 150);
-    window.alert(
-      `The refurbishment of your item will cost ${randomAmount} euros`
-    );
-
-    navigate("/");
+    notifications.show({
+      title: `The refurbishment of your item will cost ${randomAmount} euros`
+    });
+    setTimeout(()=> {
+      navigate("/");
+    },2000) 
   };
 
   return (

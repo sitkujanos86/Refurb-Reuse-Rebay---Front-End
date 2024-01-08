@@ -43,7 +43,7 @@ function App() {
               <CartPage cartItems={cartItems} setCartItems={setCartItems} API_URL={API_URL} />
             }
           />
-          <Route path="/AddItem" element={<AddItemPage />} />
+          <Route path="/AddItem" element={<AddItemPage API_URL={API_URL} />} />
           <Route path="/Quote" element={<QuotePage />} />
           <Route path="/item/:itemId" element={<DetailsPage />} />
           <Route path="/edit/:itemId" element={<EditItemPage />} />

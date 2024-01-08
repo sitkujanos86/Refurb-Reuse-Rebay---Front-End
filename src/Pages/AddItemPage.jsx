@@ -2,9 +2,10 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid"
+import { notifications } from "@mantine/notifications";
 
 
-function AddItemPage() {
+function AddItemPage({API_URL}) {
     const navigate = useNavigate();
 // State variables to store the values of the form inputs.
     const [name, setName] = useState("");
@@ -25,7 +26,7 @@ function AddItemPage() {
     
     try {
         await axios.post(
-          `http://localhost:5005/items`,
+          `${API_URL}`,
           {
             id: uuidv4(),
             name,
@@ -40,8 +41,12 @@ function AddItemPage() {
             },
           }
         );
-  
-        navigate("/");
+        notifications.show({
+          title: `Item added correctly!`
+        });
+        setTimeout(()=> {
+          navigate("/");
+        },2000) 
       } catch (error) {
         console.error(error);
       }
