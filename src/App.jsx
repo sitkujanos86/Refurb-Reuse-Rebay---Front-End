@@ -36,6 +36,7 @@ function App() {
         <Route path="/Quote" element={<QuotePage />} />
         <Route path="/item/:itemId" element={<DetailsPage />} />
         <Route path="/edit/:itemId" element={<EditItemPage />} />
+        <Route path="*" element={<h1>404 Page</h1>} />
       </Routes>
       <Footer />
     </div>
