@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { TextInput, Button, Group, Box } from "@mantine/core";
+import { notifications } from '@mantine/notifications';
 
 function EditItemPage({VITE_API_URL}) {
   const navigate = useNavigate();
