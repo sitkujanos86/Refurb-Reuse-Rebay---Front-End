@@ -3,8 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { TextInput, Button, Group, Box } from "@mantine/core";
 
-function EditItemPage() {
-  let API_URL = "http://localhost:5005/items";
+function EditItemPage(VITE_API_URL) {
   const navigate = useNavigate();
   const { itemId } = useParams();
 
@@ -24,7 +23,7 @@ function EditItemPage() {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/${itemId}`)
+      .get(`${VITE_API_URL}/${itemId}`)
       .then((response) => {
         const oneItem = response.data;
         setName(oneItem.name);
@@ -40,7 +39,7 @@ function EditItemPage() {
     event.preventDefault();
     const requestBody = { name, description, picture, category, price };
 
-    axios.put(`${API_URL}/${itemId}`, requestBody).then((response) => {
+    axios.put(`${VITE_API_URL}/${itemId}`, requestBody).then((response) => {
       navigate(`/`);
     });
   };

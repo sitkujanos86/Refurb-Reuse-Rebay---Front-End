@@ -6,7 +6,7 @@ import { Card, Image, Text, Button, Group } from '@mantine/core';
 import { SimpleGrid } from '@mantine/core';
 import { notifications } from '@mantine/notifications';
 
-function HomePage({cartItems, setCartItems, API_URL}) {
+function HomePage({cartItems, setCartItems, VITE_API_URL}) {
 
   
   const [items, setItems] = useState([]);
@@ -16,10 +16,10 @@ function HomePage({cartItems, setCartItems, API_URL}) {
 
   const getAllItems = (query) => {
     if (query) {
-      API_URL += `?q=${query}`;
+      VITE_API_URL += `?q=${query}`;
     }
     axios
-      .get(`${API_URL}`)
+      .get(`${VITE_API_URL}`)
       .then((response) => setItems(response.data))
       .catch((error) => console.error(error));
   };

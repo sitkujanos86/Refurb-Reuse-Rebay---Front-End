@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 import { notifications } from "@mantine/notifications";
 import { TextInput, Button, Group, Box, NumberInput } from "@mantine/core";
 
-function AddItemPage({ API_URL }) {
+function AddItemPage({ VITE_API_URL }) {
   const navigate = useNavigate();
   // State variables to store the values of the form inputs.
   const [name, setName] = useState("");
@@ -26,7 +26,7 @@ function AddItemPage({ API_URL }) {
 
     try {
       await axios.post(
-        `${API_URL}`,
+        `${VITE_API_URL}`,
         {
           id: uuidv4(),
           name,

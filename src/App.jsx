@@ -15,7 +15,7 @@ import { AppShell } from "@mantine/core";
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
-  let API_URL = "http://localhost:5005/items";
+  let VITE_API_URL = import.meta.env.VITE_API_URL;
   
   return (
     <div className="App">
@@ -33,20 +33,20 @@ function App() {
           <Route
             path="/"
             element={
-              <HomePage cartItems={cartItems} setCartItems={setCartItems} API_URL={API_URL} />
+              <HomePage cartItems={cartItems} setCartItems={setCartItems} VITE_API_URL={VITE_API_URL} />
             }
           />
           <Route path="/About" element={<AboutPage />} />
           <Route
             path="/Cart"
             element={
-              <CartPage cartItems={cartItems} setCartItems={setCartItems} API_URL={API_URL} />
+              <CartPage cartItems={cartItems} setCartItems={setCartItems} VITE_API_URL={VITE_API_URL} />
             }
           />
-          <Route path="/AddItem" element={<AddItemPage API_URL={API_URL} />} />
+          <Route path="/AddItem" element={<AddItemPage VITE_API_URL={VITE_API_URL} />} />
           <Route path="/Quote" element={<QuotePage />} />
           <Route path="/item/:itemId" element={<DetailsPage />} />
-          <Route path="/edit/:itemId" element={<EditItemPage />} />
+          <Route path="/edit/:itemId" element={<EditItemPage VITE_API_URL={VITE_API_URL} />} />
           <Route path="*" element={<h1>404 Page</h1>} />
         </Routes>
 

@@ -3,7 +3,7 @@ import { notifications } from '@mantine/notifications';
 import axios from "axios";
 
 
-function CartPage({cartItems, setCartItems, API_URL}) {
+function CartPage({cartItems, setCartItems, VITE_API_URL}) {
   
   const removeItem = (itemId) => {
     const filteredItems = cartItems.filter(item => {
@@ -14,7 +14,7 @@ function CartPage({cartItems, setCartItems, API_URL}) {
   };
 
   const deleteItemFromDatabase = (itemId) => {
-    return axios.delete(`${API_URL}/${itemId}`);
+    return axios.delete(`${VITE_API_URL}/${itemId}`);
   };
 
   const deleteAll = async () => {
