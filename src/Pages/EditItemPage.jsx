@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { TextInput, Button, Group, Box } from "@mantine/core";
 
-function EditItemPage(VITE_API_URL) {
+function EditItemPage({VITE_API_URL}) {
   const navigate = useNavigate();
   const { itemId } = useParams();
 
