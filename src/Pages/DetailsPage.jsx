@@ -3,16 +3,15 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { Card, Image, Text, Button, Group } from "@mantine/core";
 
-function DetailsPage() {
+function DetailsPage({VITE_API_URL}) {
   const [item, setItem] = useState({});
   const { itemId } = useParams();
 
   const navigate = useNavigate();
-  const API_URL = "http://localhost:5005";
-
+  
   const getSingleItem = () => {
     axios
-      .get(`${API_URL}/items/${itemId}`)
+      .get(`${VITE_API_URL}/${itemId}`)
       .then((response) => setItem(response.data))
       .catch((error) => console.error(error));
   };

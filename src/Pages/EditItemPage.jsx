@@ -39,7 +39,7 @@ function EditItemPage({VITE_API_URL}) {
     event.preventDefault();
     const requestBody = { name, description, picture, category, price };
 
-    axios.put(`${VITE_API_URL}/${itemId}`, requestBody).then((response) => {
+    axios.put(`${VITE_API_URL}/${itemId}`, requestBody).then(() => {
       navigate(`/`);
     });
   };
