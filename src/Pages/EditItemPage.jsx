@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { TextInput, Button, Group, Box } from "@mantine/core";
 import { notifications } from '@mantine/notifications';
+import { useWindowScroll } from "@mantine/hooks";
 
 function EditItemPage({VITE_API_URL}) {
   const navigate = useNavigate();
@@ -38,17 +39,25 @@ function EditItemPage({VITE_API_URL}) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    if(window.confirm("Do you have the permission to update this item?")){
     const requestBody = { name, description, picture, category, price };
-
     axios.put(`${VITE_API_URL}/${itemId}`, requestBody).then(() => {
       notifications.show({
         title: `Item updated correctly!`,
       });
       setTimeout(() => {
         navigate("/");
-      }, 2000);
-    });
-  };
+      }, 2000)})
+    } else {
+        notifications.show({
+          title: `Sorry it seems you can't update this item!`,
+        });
+        setTimeout(() => {
+          navigate("/");
+        }, 2000);
+      }
+  }
+  
 
   return (
     <>

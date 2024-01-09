@@ -45,7 +45,7 @@ function App() {
           />
           <Route path="/AddItem" element={<AddItemPage VITE_API_URL={VITE_API_URL} />} />
           <Route path="/Quote" element={<QuotePage />} />
-          <Route path="/item/:itemId" element={<DetailsPage />} />
+          <Route path="/item/:itemId" element={<DetailsPage VITE_API_URL={VITE_API_URL} />} />
           <Route path="/edit/:itemId" element={<EditItemPage VITE_API_URL={VITE_API_URL} />} />
           <Route path="*" element={<h1>404 Page</h1>} />
         </Routes>
