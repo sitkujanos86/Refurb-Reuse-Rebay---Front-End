@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import { Card, Image, Text, Button, Group } from "@mantine/core";
 
 function DetailsPage() {
   const [item, setItem] = useState({});
@@ -24,20 +25,35 @@ function DetailsPage() {
     <div className="itemCtn">
       {item && (
         <>
-          <img src={item.picture} alt="Item Image" height="30px" width="auto" />
-          <h3>{item.name}</h3>
-          <p>Price: {item.price}</p>
-          <p>Description: {item.description}</p>
-          <p>Category: {item.category}</p>
+          <Card shadow="sm" padding="lg" radius="md" withBorder>
+            <Card.Section>
+              <Image
+                src={item.picture}
+                style={{ height: "500px", width: "400px" }}
+                alt="Item picture"
+              />
+            </Card.Section>
 
-          <button
-            className="itemBnt"
-            onClick={() => {
-              navigate("/");
-            }}
-          >
-            Back
-          </button>
+            <Group justify="space-between" mt="md" mb="xs">
+              <Text fw={500}>{item.name}</Text>
+            </Group>
+            <Text size="sm" c="dimmed">
+              {item.description}
+            </Text>
+            <Text size="sm" c="dimmed">
+              {item.price}€
+            </Text>
+
+            <Button
+              color="blue"
+              style={{ width: "400px" }}
+              mt="md"
+              radius="md"
+              onClick={() => navigate("/")}
+            >
+              Back
+            </Button>
+          </Card>
         </>
       )}
     </div>
