@@ -40,7 +40,12 @@ function EditItemPage({VITE_API_URL}) {
     const requestBody = { name, description, picture, category, price };
 
     axios.put(`${VITE_API_URL}/${itemId}`, requestBody).then(() => {
-      navigate(`/`);
+      notifications.show({
+        title: `Item updated correctly!`,
+      });
+      setTimeout(() => {
+        navigate("/");
+      }, 2000);
     });
   };
 

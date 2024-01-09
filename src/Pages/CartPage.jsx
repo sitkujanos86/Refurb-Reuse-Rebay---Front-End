@@ -26,6 +26,9 @@ function CartPage({cartItems, setCartItems, VITE_API_URL}) {
         notifications.show({
           title: 'Purchase completed! You own us money!'
         });
+        setTimeout(() => {
+          navigate("/");
+        }, 2000);
       } catch (error) {
         console.error("Error deleting items:", error);
         notifications.show({
