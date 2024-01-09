@@ -1,6 +1,7 @@
 import { notifications } from "@mantine/notifications";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { TextInput, Button, Group, Box } from "@mantine/core";
 
 function QuotePage() {
   const navigate = useNavigate();
@@ -20,57 +21,53 @@ function QuotePage() {
     event.preventDefault();
     const randomAmount = Math.floor(Math.random() * 150);
     notifications.show({
-      title: `The refurbishment of your item will cost ${randomAmount} euros`
+      title: `The refurbishment of your item will cost ${randomAmount} euros`,
     });
-    setTimeout(()=> {
+    setTimeout(() => {
       navigate("/");
-    },2000) 
+    }, 2000);
   };
 
   return (
     <>
       <div className="formCtn">
-        <form onSubmit={handleSubmit}>
-          <label>Name</label>
-          <input
-            className="nameCtn"
-            type="text"
-            name="name"
-            placeholder="Item Name"
-            value={name}
-            onChange={handleName}
-          />
-          <label>Description</label>
-          <textarea
-            className="descriptionCtn"
-            type="text"
-            name="description"
-            placeholder="Description"
-            rows="3"
-            value={description}
-            onChange={handleDescription}
-          ></textarea>
-          <label>Image</label>
-          <input
-            className="imgCtn"
-            type="text"
-            name="picture"
-            placeholder="Picture URL"
-            value={picture}
-            onChange={handlePicture}
-          />
-          <label>Category</label>
-          <input
-            className="categoryCtn"
-            type="text"
-            name="Category"
-            placeholder="Category"
-            value={category}
-            onChange={handleCategory}
-          />
+        <Box maw={340} mx="auto">
+          <form onSubmit={handleSubmit}>
+            <TextInput
+              label="Name"
+              placeholder="Item Name"
+              value={name}
+              onChange={handleName}
+            />
+            <TextInput
+              mt="md"
+              label="Description"
+              placeholder="Description"
+              value={description}
+              onChange={handleDescription}
+            />
+            <TextInput
+              mt="md"
+              label="Image"
+              placeholder="Picture URL"
+              value={picture}
+              onChange={handlePicture}
+            />
+            <TextInput
+              mt="md"
+              label="Category"
+              placeholder="Category"
+              value={category}
+              onChange={handleCategory}
+            />
 
-          <button className="askForQuote">Ask for quote!</button>
-        </form>
+            <Group justify="center" mt="xl">
+              <Button type="submit" mt="sm">
+                Ask for quote!
+              </Button>
+            </Group>
+          </form>
+        </Box>
       </div>
     </>
   );
