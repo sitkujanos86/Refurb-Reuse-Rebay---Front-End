@@ -1,121 +1,106 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { v4 as uuidv4 } from "uuid"
+import { v4 as uuidv4 } from "uuid";
 import { notifications } from "@mantine/notifications";
+import { TextInput, Button, Group, Box, NumberInput } from "@mantine/core";
 
+function AddItemPage({ API_URL }) {
+  const navigate = useNavigate();
+  // State variables to store the values of the form inputs.
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [picture, setPicture] = useState("");
+  const [category, setCategory] = useState("");
+  const [price, setPrice] = useState(0);
 
-function AddItemPage({API_URL}) {
-    const navigate = useNavigate();
-// State variables to store the values of the form inputs.
-    const [name, setName] = useState("");
-    const [description, setDescription] = useState("");
-    const [picture, setPicture] = useState("");
-    const [category, setCategory] = useState("");
-    const [price, setPrice] = useState(0);
-    
-// Handler functions for the form inputs. You can leave these as they are.
-    const handleName = (event) => setName(event.target.value);
-    const handleDescription = (event) => setDescription(event.target.value);
-    const handlePicture = (event) => setPicture(event.target.value);
-    const handleCategory = (event) => setCategory(event.target.value);
-    const handlePrice = (event) => setPrice(event.target.value);
+  // Handler functions for the form inputs. You can leave these as they are.
+  const handleName = (event) => setName(event.target.value);
+  const handleDescription = (event) => setDescription(event.target.value);
+  const handlePicture = (event) => setPicture(event.target.value);
+  const handleCategory = (event) => setCategory(event.target.value);
+  const handlePrice = (event) => setPrice(event.target.value);
 
-    const handleSubmit = async (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    
-    try {
-        await axios.post(
-          `${API_URL}`,
-          {
-            id: uuidv4(),
-            name,
-            description,
-            picture,
-            category,
-            price: parseInt(price),
-          },
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-        notifications.show({
-          title: `Item added correctly!`
-        });
-        setTimeout(()=> {
-          navigate("/");
-        },2000) 
-      } catch (error) {
-        console.error(error);
-      }
-    };
 
-    return (
-        <>
-          <div className="formCtn">
-            <form onSubmit={handleSubmit}>
-              <label>Name</label>
-              <input
-                className="nameCtn"
-                type="text"
-                name="name"
-                placeholder="Item Name"
-                value={name}
-                onChange={handleName}
-              />
-              <label>Description</label>
-              <textarea
-                className="descriptionCtn"
-                type="text"
-                name="description"
-                placeholder="Description"
-                rows="3"
-                value={description}
-                onChange={handleDescription}
-              ></textarea>
-              <label>Image</label>
-              <input
-                className="imgCtn"
-                type="text"
-                name="picture"
-                placeholder="Picture URL"
-                value={picture}
-                onChange={handlePicture}
-              />
-              <label>Category</label>
-              <input
-                className="categoryCtn"
-                type="text"
-                name="Category"
-                placeholder="Category"
-                value={category}
-                onChange={handleCategory}
-              />
-              <label>Price</label>
-              <div className="priceCtn">
-                <div>
-                  <span className="euroCtn">
-                    €
-                  </span>
-                </div>
-                <input
-                  className="numberCtn"
-                  type="number"
-                  name="Price"
-                  value={price}
-                  onChange={handlePrice}
-                  min={1}
-                  max={1000}
-                />
-              </div>
-              <button className="addBtn">Add Item</button>
-            </form>
-          </div>
-        </>
+    try {
+      await axios.post(
+        `${API_URL}`,
+        {
+          id: uuidv4(),
+          name,
+          description,
+          picture,
+          category,
+          price: parseInt(price),
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
       );
+      notifications.show({
+        title: `Item added correctly!`,
+      });
+      setTimeout(() => {
+        navigate("/");
+      }, 2000);
+    } catch (error) {
+      console.error(error);
     }
-    
+  };
+
+  return (
+    <>
+      <div className="formCtn">
+        <Box maw={340} mx="auto">
+          <form onSubmit={handleSubmit}>
+            <TextInput
+              label="Name"
+              placeholder="Item Name"
+              value={name}
+              onChange={handleName}
+            />
+            <TextInput
+              mt="md"
+              label="Description"
+              placeholder="Description"
+              value={description}
+              onChange={handleDescription}
+            />
+            <TextInput
+              mt="md"
+              label="Image"
+              placeholder="Picture URL"
+              value={picture}
+              onChange={handlePicture}
+            />
+            <TextInput
+              mt="md"
+              label="Category"
+              placeholder="Category"
+              value={category}
+              onChange={handleCategory}
+            />
+            <TextInput
+              label="Price"
+              placeholder="Price in Euro"
+              value={price}
+              onChange={handlePrice}
+            />
+
+            <Group justify="center" mt="xl">
+              <Button type="submit" mt="sm">
+                Add Item
+              </Button>
+            </Group>
+          </form>
+        </Box>
+      </div>
+    </>
+  );
+}
+
 export default AddItemPage;
-    
