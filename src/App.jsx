@@ -15,7 +15,7 @@ import { AppShell } from "@mantine/core";
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
-  let VITE_API_URL = import.meta.env.VITE_API_URL;
+  let VITE_API_URL = `${import.meta.env.VITE_API_URL}/items`;
   
   return (
     <div className="App">
