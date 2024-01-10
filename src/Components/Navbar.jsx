@@ -13,7 +13,7 @@ function Navbar() {
     <>
       <SimpleGrid
         style={{ marginLeft: "13vw", alignItems: "center" }}
-        cols={width > 1200 ? 5 : width > 800 ? 3 : 2}
+        cols={width > 1200 ? 5 : width > 800 ? 2 : 1}
       >
         <Link to="/">
           <img className="logo" src={rEbay} alt="ReBay" />

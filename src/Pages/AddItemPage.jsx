@@ -7,14 +7,13 @@ import { TextInput, Button, Group, Box } from "@mantine/core";
 
 function AddItemPage({ VITE_API_URL }) {
   const navigate = useNavigate();
-  // State variables to store the values of the form inputs.
+
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [picture, setPicture] = useState("");
   const [category, setCategory] = useState("");
   const [price, setPrice] = useState(0);
 
-  // Handler functions for the form inputs. You can leave these as they are.
   const handleName = (event) => setName(event.target.value);
   const handleDescription = (event) => setDescription(event.target.value);
   const handlePicture = (event) => setPicture(event.target.value);

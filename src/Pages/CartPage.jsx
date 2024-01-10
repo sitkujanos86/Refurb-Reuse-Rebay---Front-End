@@ -11,8 +11,10 @@ import {
   Text,
 } from "@mantine/core";
 import { useViewportSize } from "@mantine/hooks";
+import { useNavigate } from "react-router-dom";
 
 function CartPage({ cartItems, setCartItems, VITE_API_URL }) {
+  const navigate = useNavigate();
   const { width } = useViewportSize();
   const removeItem = (itemId) => {
     const filteredItems = cartItems.filter((item) => {
@@ -29,11 +31,10 @@ function CartPage({ cartItems, setCartItems, VITE_API_URL }) {
   const deleteAll = async () => {
     if (cartItems.length !== 0) {
       try {
-        // Use Promise.all to handle multiple asynchronous delete operations
         await Promise.all(
           cartItems.map((item) => deleteItemFromDatabase(item.id))
         );
-        setCartItems([]); // Clear all items from the cart
+        setCartItems([]);
         notifications.show({
           title: "Purchase completed! You own us money!",
         });

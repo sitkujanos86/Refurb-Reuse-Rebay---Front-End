@@ -5,13 +5,12 @@ import { TextInput, Button, Group, Box } from "@mantine/core";
 
 function QuotePage() {
   const navigate = useNavigate();
-  // State variables to store the values of the form inputs.
+
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [picture, setPicture] = useState("");
   const [category, setCategory] = useState("");
 
-  // Handler functions for the form inputs
   const handleName = (event) => setName(event.target.value);
   const handleDescription = (event) => setDescription(event.target.value);
   const handlePicture = (event) => setPicture(event.target.value);
