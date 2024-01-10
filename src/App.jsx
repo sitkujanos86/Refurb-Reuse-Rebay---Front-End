@@ -20,8 +20,8 @@ function App() {
 
   return (
     <div className="App">
-      <AppShell header={{ height: 80 }} footer={{ height: 60 }}>
-        <AppShell.Header style={{ alignContent: "center" }}>
+      <AppShell>
+        <AppShell.Header style={{ height: "auto" }}>
           <Navbar />
         </AppShell.Header>
 
@@ -77,7 +77,7 @@ function App() {
             />
           </Routes>
 
-          <AppShell.Footer>
+          <AppShell.Footer style={{ height: "auto" }}>
             <Footer />
           </AppShell.Footer>
         </AppShell.Main>

@@ -1,11 +1,13 @@
 import { NavLink, SimpleGrid, Center } from "@mantine/core";
 import { IconBrandGithubFilled } from "@tabler/icons-react";
+import { useViewportSize } from "@mantine/hooks";
 
 function Footer() {
+  const { width } = useViewportSize();
   return (
     <>
       <Center>
-        <SimpleGrid cols={2}>
+        <SimpleGrid cols={width > 1200 ? 2 : 1}>
           <NavLink
             href="https://github.com/sitkujanos86/json-server-backend.git"
             label="GitHub Back End Repository"

@@ -1,8 +1,11 @@
 import { Card, Group, Image, Text, NavLink, SimpleGrid } from "@mantine/core";
 import "../Styles/About.css";
 import { IconBrandGithubFilled, IconBrandLinkedin } from "@tabler/icons-react";
+import { useViewportSize } from "@mantine/hooks";
 
 function AboutPage() {
+  const { width } = useViewportSize();
+
   return (
     <div className="about">
       <h1 className="textabout">About us</h1>
@@ -10,7 +13,7 @@ function AboutPage() {
         We are three Ironhackers passionate about Web Development. <br />
         Check our profiles below!
       </p>
-      <SimpleGrid cols={3}>
+      <SimpleGrid cols={width > 1200 ? 3 : width > 800 ? 2 : 1}>
         <div>
           <Card shadow="sm" padding="lg" radius="md" withBorder>
             <Card.Section>

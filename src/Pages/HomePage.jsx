@@ -5,11 +5,13 @@ import Search from "../Components/Search";
 import { Card, Image, Text, Button, Group } from "@mantine/core";
 import { SimpleGrid } from "@mantine/core";
 import { notifications } from "@mantine/notifications";
+import { useViewportSize } from "@mantine/hooks";
 
 function HomePage({ cartItems, setCartItems, VITE_API_URL }) {
   const [items, setItems] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [timeoutId, setTimeoutId] = useState();
+  const { width } = useViewportSize();
 
   const getAllItems = (query) => {
     if (query) {
@@ -55,7 +57,7 @@ function HomePage({ cartItems, setCartItems, VITE_API_URL }) {
     <>
       <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <div className="ItemsList">
-        <SimpleGrid cols={3}>
+        <SimpleGrid cols={width > 1200 ? 3 : width > 800 ? 2 : 1}>
           {items.map((item) => {
             return (
               <div className="Item card" key={item.id}>

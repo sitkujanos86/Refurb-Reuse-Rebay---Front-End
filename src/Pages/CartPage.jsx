@@ -2,8 +2,10 @@ import React from "react";
 import { notifications } from "@mantine/notifications";
 import axios from "axios";
 import { Button, Card, Group, Image, SimpleGrid, Text } from "@mantine/core";
+import { useViewportSize } from "@mantine/hooks";
 
 function CartPage({ cartItems, setCartItems, VITE_API_URL }) {
+  const { width } = useViewportSize();
   const removeItem = (itemId) => {
     const filteredItems = cartItems.filter((item) => {
       return item.id !== itemId;
@@ -50,7 +52,7 @@ function CartPage({ cartItems, setCartItems, VITE_API_URL }) {
   return (
     <div>
       <h1>Your cart</h1>
-      <SimpleGrid cols={3}>
+      <SimpleGrid cols={width > 1200 ? 3 : width > 800 ? 2 : 1}>
         {cartItems.map((item) => (
           <div key={item.id}>
             <Card shadow="sm" padding="lg" radius="md" withBorder>
