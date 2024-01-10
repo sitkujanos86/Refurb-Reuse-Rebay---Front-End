@@ -21,7 +21,7 @@ function App() {
   return (
     <div className="App">
       <AppShell>
-        <AppShell.Header style={{ height: "auto" }}>
+        <AppShell.Header style={{ height: "auto", alignContent: "center" }}>
           <Navbar />
         </AppShell.Header>
 

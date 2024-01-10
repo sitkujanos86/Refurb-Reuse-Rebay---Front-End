@@ -10,8 +10,8 @@ function Navbar() {
   const { width } = useViewportSize();
 
   return (
-    <Center>
-      <SimpleGrid cols={width > 1200 ? 5 : width > 800 ? 3 : 1}>
+    <Center style={{ alignItems: "center", alignContent: "center" }}>
+      <SimpleGrid cols={width > 1200 ? 5 : 3}>
         <Link to="/">
           <img className="logo" src={rEbay} alt="ReBay" />
         </Link>
@@ -35,7 +35,12 @@ function Navbar() {
         </Link>
 
         <Link to="/Cart">
-          <ThemeIcon radius="md" size="lg" color="orange">
+          <ThemeIcon
+            radius="md"
+            size="lg"
+            color="orange"
+            style={{ marginTop: "1.10rem" }}
+          >
             <IconShoppingCart size="1rem" stroke={1.5} />
           </ThemeIcon>
         </Link>
