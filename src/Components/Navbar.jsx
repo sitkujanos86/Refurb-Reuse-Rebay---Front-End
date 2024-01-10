@@ -1,4 +1,4 @@
-import { Button, Center, ThemeIcon } from "@mantine/core";
+import { Button, ThemeIcon } from "@mantine/core";
 import "../Styles/Navbar.css";
 import { Link } from "react-router-dom";
 import { IconShoppingCart } from "@tabler/icons-react";
