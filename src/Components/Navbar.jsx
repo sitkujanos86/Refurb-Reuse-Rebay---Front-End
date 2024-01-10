@@ -2,6 +2,7 @@ import { Button, Center, ThemeIcon } from "@mantine/core";
 import "../Styles/Navbar.css";
 import { Link } from "react-router-dom";
 import { IconShoppingCart } from "@tabler/icons-react";
+import rEbay from "../assets/images/Rebay Logo.png"
 
 function Navbar() {
   return (
@@ -12,9 +13,7 @@ function Navbar() {
       }}
     >
       <Link to="/">
-        <Button color="blue" mt="md" radius="md">
-          Home
-        </Button>
+        <img className="logo" src={rEbay} alt="ReBay" />
       </Link>
 
       <Link to="/About">
