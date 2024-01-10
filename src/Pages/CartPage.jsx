@@ -1,7 +1,15 @@
 import React from "react";
 import { notifications } from "@mantine/notifications";
 import axios from "axios";
-import { Button, Card, Group, Image, SimpleGrid, Text } from "@mantine/core";
+import {
+  Button,
+  Card,
+  Center,
+  Group,
+  Image,
+  SimpleGrid,
+  Text,
+} from "@mantine/core";
 import { useViewportSize } from "@mantine/hooks";
 
 function CartPage({ cartItems, setCartItems, VITE_API_URL }) {
@@ -50,7 +58,13 @@ function CartPage({ cartItems, setCartItems, VITE_API_URL }) {
   }, 0);
 
   return (
-    <div>
+    <Center
+      style={{
+        flexDirection: "column",
+        marginBottom: "3rem",
+        marginTop: "1rem",
+      }}
+    >
       <h1>Your cart</h1>
       <SimpleGrid cols={width > 1200 ? 3 : width > 800 ? 2 : 1}>
         {cartItems.map((item) => (
@@ -94,11 +108,12 @@ function CartPage({ cartItems, setCartItems, VITE_API_URL }) {
         fullWidth
         mt="md"
         radius="md"
+        style={{ width: "500px" }}
         onClick={() => deleteAll()}
       >
         Buy!
       </Button>
-    </div>
+    </Center>
   );
 }
 

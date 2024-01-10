@@ -21,11 +21,9 @@ function App() {
   return (
     <div className="App">
       <AppShell>
-        <AppShell.Header style={{ height: "auto", alignContent: "center" }}>
-          <Navbar />
-        </AppShell.Header>
-
-        <AppShell.Main>
+        <AppShell.Main style={{ height: "auto" }}>
+          <Navbar style={{ height: "auto", alignContent: "center" }} />
+          <hr />
           <Routes>
             <Route
               path="/"
@@ -76,10 +74,8 @@ function App() {
               }
             />
           </Routes>
-
-          <AppShell.Footer style={{ height: "auto" }}>
-            <Footer />
-          </AppShell.Footer>
+          <hr />
+          <Footer />
         </AppShell.Main>
       </AppShell>
     </div>

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import { notifications } from "@mantine/notifications";
-import { TextInput, Button, Group, Box, NumberInput } from "@mantine/core";
+import { TextInput, Button, Group, Box } from "@mantine/core";
 
 function AddItemPage({ VITE_API_URL }) {
   const navigate = useNavigate();
@@ -54,51 +54,54 @@ function AddItemPage({ VITE_API_URL }) {
 
   return (
     <>
-      <div className="formCtn">
-        <Box maw={340} mx="auto">
-          <form onSubmit={handleSubmit}>
-            <TextInput
-              label="Name"
-              placeholder="Item Name"
-              value={name}
-              onChange={handleName}
-            />
-            <TextInput
-              mt="md"
-              label="Description"
-              placeholder="Description"
-              value={description}
-              onChange={handleDescription}
-            />
-            <TextInput
-              mt="md"
-              label="Image"
-              placeholder="Picture URL"
-              value={picture}
-              onChange={handlePicture}
-            />
-            <TextInput
-              mt="md"
-              label="Category"
-              placeholder="Category"
-              value={category}
-              onChange={handleCategory}
-            />
-            <TextInput
-              label="Price"
-              placeholder="Price in Euro"
-              value={price}
-              onChange={handlePrice}
-            />
+      <Box
+        maw={340}
+        mx="auto"
+        style={{ marginBottom: "1.5rem", marginTop: "1.5rem" }}
+      >
+        <h3>Add your item here</h3>
+        <form onSubmit={handleSubmit}>
+          <TextInput
+            label="Name"
+            placeholder="Item Name"
+            value={name}
+            onChange={handleName}
+          />
+          <TextInput
+            mt="md"
+            label="Description"
+            placeholder="Description"
+            value={description}
+            onChange={handleDescription}
+          />
+          <TextInput
+            mt="md"
+            label="Image"
+            placeholder="Picture URL"
+            value={picture}
+            onChange={handlePicture}
+          />
+          <TextInput
+            mt="md"
+            label="Category"
+            placeholder="Category"
+            value={category}
+            onChange={handleCategory}
+          />
+          <TextInput
+            label="Price"
+            placeholder="Price in Euro"
+            value={price}
+            onChange={handlePrice}
+          />
 
-            <Group justify="center" mt="xl">
-              <Button type="submit" mt="sm">
-                Add Item
-              </Button>
-            </Group>
-          </form>
-        </Box>
-      </div>
+          <Group justify="center" mt="xl">
+            <Button type="submit" mt="sm">
+              Add Item
+            </Button>
+          </Group>
+        </form>
+      </Box>
     </>
   );
 }

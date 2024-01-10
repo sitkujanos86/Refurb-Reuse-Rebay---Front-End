@@ -55,23 +55,17 @@ function HomePage({ cartItems, setCartItems, VITE_API_URL }) {
 
   return (
     <>
-      <Center style={{ marginTop: "6%" }}>
+      <Center style={{ marginTop: "1rem" }}>
         <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       </Center>
       <SimpleGrid
         cols={width > 1200 ? 3 : width > 800 ? 2 : 1}
-        style={{ marginTop: "1%" }}
+        style={{ margin: "1.5rem" }}
       >
         {items.map((item) => {
           return (
             <div className="Item card" key={item.id}>
-              <Card
-                shadow="sm"
-                padding="lg"
-                radius="md"
-                withBorder
-                style={{ marginBottom: "10%" }}
-              >
+              <Card shadow="sm" padding="lg" radius="md" withBorder>
                 <Link to={"/item/" + item.id}>
                   <Card.Section>
                     <Image
@@ -105,7 +99,7 @@ function HomePage({ cartItems, setCartItems, VITE_API_URL }) {
 
                 <Link to={"/edit/" + item.id}>
                   <Button color="blue" fullWidth mt="md" radius="md">
-                    Update item
+                    Edit item
                   </Button>
                 </Link>
               </Card>

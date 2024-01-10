@@ -13,7 +13,10 @@ function AboutPage() {
         We are three Ironhackers passionate about Web Development. <br />
         Check our profiles below!
       </p>
-      <SimpleGrid cols={width > 1200 ? 3 : width > 800 ? 2 : 1}>
+      <SimpleGrid
+        style={{ marginBottom: "2rem" }}
+        cols={width > 1200 ? 3 : width > 800 ? 2 : 1}
+      >
         <div>
           <Card shadow="sm" padding="lg" radius="md" withBorder>
             <Card.Section>

@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import { Card, Image, Text, Button, Group } from "@mantine/core";
+import { Card, Image, Text, Button, Group, Center } from "@mantine/core";
 
-function DetailsPage({VITE_API_URL}) {
+function DetailsPage({ VITE_API_URL }) {
   const [item, setItem] = useState({});
   const { itemId } = useParams();
 
   const navigate = useNavigate();
-  
+
   const getSingleItem = () => {
     axios
       .get(`${VITE_API_URL}/${itemId}`)
@@ -21,9 +21,10 @@ function DetailsPage({VITE_API_URL}) {
   }, [itemId]);
 
   return (
-    <div className="itemCtn">
-      {item && (
-        <>
+    <Center style={{ flexDirection: "column" }}>
+      <h3>Product Details</h3>
+      <Center style={{ marginBottom: "1.5rem", marginTop: "1.5rem" }}>
+        {item && (
           <Card shadow="sm" padding="lg" radius="md" withBorder>
             <Card.Section>
               <Image
@@ -53,9 +54,9 @@ function DetailsPage({VITE_API_URL}) {
               Back
             </Button>
           </Card>
-        </>
-      )}
-    </div>
+        )}
+      </Center>
+    </Center>
   );
 }
 

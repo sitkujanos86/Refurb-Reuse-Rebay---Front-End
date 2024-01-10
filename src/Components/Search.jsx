@@ -1,4 +1,4 @@
-import { TextInput, Center } from "@mantine/core";
+import { TextInput } from "@mantine/core";
 import { IconSearch } from "@tabler/icons-react";
 
 function Search({ searchTerm, setSearchTerm }) {

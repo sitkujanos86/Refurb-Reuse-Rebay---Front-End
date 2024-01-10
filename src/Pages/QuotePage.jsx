@@ -30,45 +30,48 @@ function QuotePage() {
 
   return (
     <>
-      <div className="formCtn">
-        <Box maw={340} mx="auto">
-          <form onSubmit={handleSubmit}>
-            <TextInput
-              label="Name"
-              placeholder="Item Name"
-              value={name}
-              onChange={handleName}
-            />
-            <TextInput
-              mt="md"
-              label="Description"
-              placeholder="Description"
-              value={description}
-              onChange={handleDescription}
-            />
-            <TextInput
-              mt="md"
-              label="Image"
-              placeholder="Picture URL"
-              value={picture}
-              onChange={handlePicture}
-            />
-            <TextInput
-              mt="md"
-              label="Category"
-              placeholder="Category"
-              value={category}
-              onChange={handleCategory}
-            />
+      <Box
+        maw={340}
+        mx="auto"
+        style={{ marginBottom: "1.5rem", marginTop: "1.5rem" }}
+      >
+        <h3>How much would it cost to repair your item? Ask a quote!</h3>
+        <form onSubmit={handleSubmit}>
+          <TextInput
+            label="Name"
+            placeholder="Item Name"
+            value={name}
+            onChange={handleName}
+          />
+          <TextInput
+            mt="md"
+            label="Description"
+            placeholder="Description"
+            value={description}
+            onChange={handleDescription}
+          />
+          <TextInput
+            mt="md"
+            label="Image"
+            placeholder="Picture URL"
+            value={picture}
+            onChange={handlePicture}
+          />
+          <TextInput
+            mt="md"
+            label="Category"
+            placeholder="Category"
+            value={category}
+            onChange={handleCategory}
+          />
 
-            <Group justify="center" mt="xl">
-              <Button type="submit" mt="sm">
-                Ask for quote!
-              </Button>
-            </Group>
-          </form>
-        </Box>
-      </div>
+          <Group justify="center" mt="xl">
+            <Button type="submit" mt="sm">
+              Ask for quote!
+            </Button>
+          </Group>
+        </form>
+      </Box>
     </>
   );
 }
