@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Search from "../Components/Search";
 import { Card, Image, Text, Button, Group } from "@mantine/core";
-import { SimpleGrid } from "@mantine/core";
+import { SimpleGrid, Center } from "@mantine/core";
 import { notifications } from "@mantine/notifications";
 import { useViewportSize } from "@mantine/hooks";
 
@@ -55,55 +55,58 @@ function HomePage({ cartItems, setCartItems, VITE_API_URL }) {
 
   return (
     <>
-      <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-      <div className="ItemsList">
-        <SimpleGrid cols={width > 1200 ? 3 : width > 800 ? 2 : 1}>
-          {items.map((item) => {
-            return (
-              <div className="Item card" key={item.id}>
-                <Card shadow="sm" padding="lg" radius="md" withBorder>
-                  <Link to={"/item/" + item.id}>
-                    <Card.Section>
-                      <Image
-                        src={item.picture}
-                        height="400vw"
-                        width="33vw"
-                        alt="Item picture"
-                      />
-                    </Card.Section>
+      <Center style={{ marginTop: "6.5rem" }}>
+        <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+      </Center>
+      <SimpleGrid
+        cols={width > 1200 ? 3 : width > 800 ? 2 : 1}
+        style={{ marginTop: "2rem", marginBottom: "1.5rem" }}
+      >
+        {items.map((item) => {
+          return (
+            <div className="Item card" key={item.id}>
+              <Card shadow="sm" padding="lg" radius="md" withBorder>
+                <Link to={"/item/" + item.id}>
+                  <Card.Section>
+                    <Image
+                      src={item.picture}
+                      height="400vw"
+                      width="33vw"
+                      alt="Item picture"
+                    />
+                  </Card.Section>
 
-                    <Group justify="space-between" mt="md" mb="xs">
-                      <Text fw={500}>{item.name}</Text>
-                    </Group>
-                    <Text size="sm" c="dimmed">
-                      {item.description}
-                    </Text>
-                    <Text size="sm" c="dimmed">
-                      {item.price}€
-                    </Text>
-                  </Link>
+                  <Group justify="space-between" mt="md" mb="xs">
+                    <Text fw={500}>{item.name}</Text>
+                  </Group>
+                  <Text size="sm" c="dimmed">
+                    {item.description}
+                  </Text>
+                  <Text size="sm" c="dimmed">
+                    {item.price}€
+                  </Text>
+                </Link>
 
-                  <Button
-                    color="blue"
-                    fullWidth
-                    mt="md"
-                    radius="md"
-                    onClick={() => addToCart(item)}
-                  >
-                    Add to Cart
+                <Button
+                  color="blue"
+                  fullWidth
+                  mt="md"
+                  radius="md"
+                  onClick={() => addToCart(item)}
+                >
+                  Add to Cart
+                </Button>
+
+                <Link to={"/edit/" + item.id}>
+                  <Button color="blue" fullWidth mt="md" radius="md">
+                    Update item
                   </Button>
-
-                  <Link to={"/edit/" + item.id}>
-                    <Button color="blue" fullWidth mt="md" radius="md">
-                      Update item
-                    </Button>
-                  </Link>
-                </Card>
-              </div>
-            );
-          })}
-        </SimpleGrid>
-      </div>
+                </Link>
+              </Card>
+            </div>
+          );
+        })}
+      </SimpleGrid>
     </>
   );
 }

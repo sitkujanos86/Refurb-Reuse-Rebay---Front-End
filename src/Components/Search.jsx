@@ -3,7 +3,7 @@ import { IconSearch } from "@tabler/icons-react";
 
 function Search({ searchTerm, setSearchTerm }) {
   return (
-    <Center style={{ padding: "2rem" }}>
+    <>
       <TextInput
         leftSection={<IconSearch size="1rem" stroke={1.5} />}
         style={{ width: "500px" }}
@@ -14,7 +14,7 @@ function Search({ searchTerm, setSearchTerm }) {
         value={searchTerm}
         onChange={(event) => setSearchTerm(event.target.value)}
       />
-    </Center>
+    </>
   );
 }
 
