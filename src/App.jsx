@@ -11,7 +11,8 @@ import QuotePage from "./Pages/QuotePage";
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import EditItemPage from "./Pages/EditItemPage";
-import { AppShell } from "@mantine/core";
+import { AppShell, Center } from "@mantine/core";
+import errorPage from "./assets/images/404.png";
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
@@ -60,7 +61,20 @@ function App() {
               path="/edit/:itemId"
               element={<EditItemPage VITE_API_URL={VITE_API_URL} />}
             />
-            <Route path="*" element={<h1>404 Page</h1>} />
+
+            <Route
+              path="*"
+              element={
+                <Center>
+                  <img
+                    className="logo"
+                    style={{ height: "30vw" }}
+                    src={errorPage}
+                    alt="404"
+                  />
+                </Center>
+              }
+            />
           </Routes>
 
           <AppShell.Footer>
