@@ -1,11 +1,11 @@
-import { NavLink, SimpleGrid, Center } from "@mantine/core";
+import { NavLink, SimpleGrid, Center, Container } from "@mantine/core";
 import { IconBrandGithubFilled } from "@tabler/icons-react";
 import { useViewportSize } from "@mantine/hooks";
 
 function Footer() {
   const { width } = useViewportSize();
   return (
-    <>
+    <Container mah="5%">
       <Center>
         <SimpleGrid cols={width > 1200 ? 2 : 1}>
           <NavLink
@@ -24,7 +24,7 @@ function Footer() {
           />
         </SimpleGrid>
       </Center>
-    </>
+    </Container>
   );
 }
 
