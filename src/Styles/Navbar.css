@@ -2,3 +2,14 @@
   height: 70px;
   margin-top: 1rem;
 }
+.logoSm {
+  height: 40px;
+  margin-top: 1rem;
+}
+
+a {
+  color: black;
+}
+a:hover {
+  color: orange;
+}
