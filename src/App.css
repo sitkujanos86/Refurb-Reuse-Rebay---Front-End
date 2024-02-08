@@ -1,6 +1,5 @@
 hr {
-  border: 2px solid orange;
-  border-radius: 5px;
+  border: 1px solid orange;
 }
 a:link {
   text-decoration: none;
