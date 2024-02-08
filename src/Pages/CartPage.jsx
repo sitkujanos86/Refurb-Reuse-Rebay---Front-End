@@ -4,10 +4,10 @@ import axios from "axios";
 import {
   Button,
   Card,
-  Center,
   Group,
   Image,
   SimpleGrid,
+  Stack,
   Text,
 } from "@mantine/core";
 import { useViewportSize } from "@mantine/hooks";
@@ -59,13 +59,7 @@ function CartPage({ cartItems, setCartItems, VITE_API_URL }) {
   }, 0);
 
   return (
-    <Center
-      style={{
-        flexDirection: "column",
-        marginBottom: "3rem",
-        marginTop: "1rem",
-      }}
-    >
+    <Stack align="center" mb="3rem" mt="1rem">
       <h1>Your cart</h1>
       <SimpleGrid cols={width > 1200 ? 3 : width > 800 ? 2 : 1}>
         {cartItems.map((item) => (
@@ -109,12 +103,12 @@ function CartPage({ cartItems, setCartItems, VITE_API_URL }) {
         fullWidth
         mt="md"
         radius="md"
-        style={{ width: "500px" }}
+        w="60vw"
         onClick={() => deleteAll()}
       >
         Buy!
       </Button>
-    </Center>
+    </Stack>
   );
 }
 

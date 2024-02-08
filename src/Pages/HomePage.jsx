@@ -55,13 +55,10 @@ function HomePage({ cartItems, setCartItems, VITE_API_URL }) {
 
   return (
     <>
-      <Center style={{ marginTop: "1rem" }}>
+      <Center mt="1rem">
         <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       </Center>
-      <SimpleGrid
-        cols={width > 1200 ? 3 : width > 800 ? 2 : 1}
-        style={{ margin: "1.5rem" }}
-      >
+      <SimpleGrid cols={width > 1200 ? 3 : width > 800 ? 2 : 1} m="1.5rem">
         {items.map((item) => {
           return (
             <div className="Item card" key={item.id}>

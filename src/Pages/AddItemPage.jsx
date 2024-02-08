@@ -53,11 +53,7 @@ function AddItemPage({ VITE_API_URL }) {
 
   return (
     <>
-      <Box
-        maw={340}
-        mx="auto"
-        style={{ marginBottom: "1.5rem", marginTop: "1.5rem" }}
-      >
+      <Box maw={340} mx="auto" my="1.5rem">
         <h3>Add your item here</h3>
         <form onSubmit={handleSubmit}>
           <TextInput

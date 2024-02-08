@@ -29,11 +29,7 @@ function QuotePage() {
 
   return (
     <>
-      <Box
-        maw={340}
-        mx="auto"
-        style={{ marginBottom: "1.5rem", marginTop: "1.5rem" }}
-      >
+      <Box maw={340} mx="auto" my="1.5rem">
         <h3>How much would it cost to repair your item? Ask a quote!</h3>
         <form onSubmit={handleSubmit}>
           <TextInput

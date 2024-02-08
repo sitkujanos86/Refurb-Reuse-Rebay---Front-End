@@ -19,10 +19,10 @@ function App() {
   let VITE_API_URL = `${import.meta.env.VITE_API_URL}/items`;
 
   return (
-    <div className="App">
-      <AppShell>
-        <AppShell.Main style={{ height: "auto" }}>
-          <Navbar style={{ height: "auto", alignContent: "center" }} />
+    <AppShell>
+      <div className="App">
+        <AppShell.Main>
+          <Navbar />
           <hr />
           <Routes>
             <Route
@@ -64,21 +64,16 @@ function App() {
               path="*"
               element={
                 <Center>
-                  <img
-                    className="logo"
-                    style={{ height: "30vw" }}
-                    src={errorPage}
-                    alt="404"
-                  />
+                  <img className="errorPage" src={errorPage} alt="404" />
                 </Center>
               }
             />
           </Routes>
-          <hr />
-          <Footer />
         </AppShell.Main>
-      </AppShell>
-    </div>
+      </div>
+      <hr />
+      <Footer />
+    </AppShell>
   );
 }
 export default App;
