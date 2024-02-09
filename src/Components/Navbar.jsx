@@ -1,16 +1,34 @@
-import { Button, Menu, Text, ThemeIcon } from "@mantine/core";
+import { Menu, Text, ThemeIcon, Burger } from "@mantine/core";
 import "../Styles/Navbar.css";
 import { Link } from "react-router-dom";
 import { IconShoppingCart } from "@tabler/icons-react";
 import rEbay from "../assets/images/Rebay Logo.png";
 import { SimpleGrid } from "@mantine/core";
 import { useViewportSize } from "@mantine/hooks";
-import { useDisclosure } from "@mantine/hooks";
-import { Burger } from "@mantine/core";
+import { useState, useEffect } from "react";
 
 function Navbar() {
   const { width } = useViewportSize();
-  const [opened, { toggle }] = useDisclosure();
+  const [opened, setOpened] = useState(false);
+  const [menuOpened, setMenuOpened] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setOpened(false);
+      setMenuOpened(false);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []); // Empty dependency array to ensure the effect runs only once
+
+  const handleBurgerClick = () => {
+    setOpened(!opened);
+    setMenuOpened(!menuOpened);
+  };
 
   return width > 1200 ? (
     <>
@@ -48,11 +66,11 @@ function Navbar() {
     <>
       <SimpleGrid ml="5vw" cols={2}>
         <div className="logoBurger">
-          <Menu shadow="md" width={150}>
+          <Menu shadow="md" width={150} opened={menuOpened}>
             <Menu.Target>
               <Burger
                 opened={opened}
-                onClick={toggle}
+                onClick={handleBurgerClick}
                 aria-label="Toggle navigation"
               />
             </Menu.Target>
