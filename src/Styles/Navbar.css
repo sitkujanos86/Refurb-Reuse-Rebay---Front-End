@@ -4,9 +4,13 @@
 }
 .logoSm {
   height: 40px;
-  margin-top: 1rem;
 }
 
+.logoBurger {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+}
 a {
   color: black;
 }
