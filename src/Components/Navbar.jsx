@@ -5,12 +5,27 @@ import { IconShoppingCart } from "@tabler/icons-react";
 import rEbay from "../assets/images/Rebay Logo.png";
 import { SimpleGrid } from "@mantine/core";
 import { useViewportSize } from "@mantine/hooks";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 function Navbar() {
   const { width } = useViewportSize();
   const [opened, setOpened] = useState(false);
   const [menuOpened, setMenuOpened] = useState(false);
+  const menuRef = useRef(null);
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setOpened(false);
+        setMenuOpened(false);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -65,7 +80,7 @@ function Navbar() {
   ) : (
     <>
       <SimpleGrid ml="5vw" cols={2}>
-        <div className="logoBurger">
+        <div className="logoBurger" ref={menuRef}>
           <Menu shadow="md" width={150} opened={menuOpened}>
             <Menu.Target>
               <Burger
