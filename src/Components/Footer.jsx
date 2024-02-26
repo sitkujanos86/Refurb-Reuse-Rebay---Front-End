@@ -8,7 +8,7 @@ function Footer() {
     <Center>
       <SimpleGrid cols={width > 1200 ? 2 : 1}>
         <NavLink
-          href="https://github.com/sitkujanos86/json-server-backend.git"
+          href="https://github.com/sitkujanos86/ReBay-backend.git"
           label="GitHub Back End Repository"
           leftSection={<IconBrandGithubFilled size="1rem" stroke={1.5} />}
           target="_blank"
